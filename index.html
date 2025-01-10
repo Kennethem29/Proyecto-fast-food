@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Comida Rápida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🔹 Inicio de Sesión -->
+    <div id="login-container" class="container">
+        <h2>Inicio de Sesión</h2>
+        <form id="login-form">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" placeholder="Ingrese su usuario">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña">
+            <button type="button" onclick="login()">Iniciar Sesión</button>
+            <button type="button" onclick="showRegister()">Registrar</button>
+        </form>
+    </div>
+
+    <!-- 🔹 Registro de Usuario -->
+    <div id="register-container" class="container hidden">
+        <h2>Registro de Usuario</h2>
+        <form id="register-form">
+            <label for="register-username">Usuario:</label>
+            <input type="text" id="register-username" placeholder="Ingrese su usuario">
+            <label for="register-password">Contraseña:</label>
+            <input type="password" id="register-password" placeholder="Ingrese su contraseña">
+            <button type="button" onclick="registerUser()">Registrar</button>
+            <button type="button" onclick="backToLogin()">Cancelar</button>
+        </form>
+    </div>
+
+    <!-- 🔹 Bienvenida -->
+    <div id="description-container" class="container hidden">
+        <h2>Bienvenida</h2>
+        <p>¡Bienvenido a nuestro servicio de pedidos de comida rápida! 🍔🍕🥤</p>
+        <p>Elige tus favoritos y agrégalos al carrito para disfrutar de una experiencia deliciosa.</p>
+        <button onclick="showMenu()">Ir al Menú</button>
+    </div>
+
+    <!-- 🔹 Menú -->
+    <div id="menu-container" class="container hidden">
+        <h2>Menú de Comida Rápida</h2>
+
+        <!-- Hamburguesas -->
+        <div class="item">
+            <img src="https://www.serargentino.com/public/images/2021/01/16109941330-17-burger-773x458.jpg" alt="Hamburguesa clásica" class="menu-img">
+            <p>Hamburguesa Clásica ($5)</p>
+            <input type="number" id="burger1-quantity" min="0" value="0">
+            <button onclick="addToCart('Hamburguesa Clásica', 5, 'burger1-quantity')">Agregar</button>
+        </div>
+
+        <div class="item">
+            <img src="https://s7d1.scene7.com/is/image/mcdonalds/DC_202201_3426-005_DoubleQuarterPounderwithCheese_1564x1564-1:product-header-mobile?wid=1313&hei=1313&dpr=off" alt="Hamburguesa doble" class="menu-img">
+            <p>Hamburguesa Doble ($7)</p>
+            <input type="number" id="burger2-quantity" min="0" value="0">
+            <button onclick="addToCart('Hamburguesa Doble', 7, 'burger2-quantity')">Agregar</button>
+        </div>
+
+        <!-- Pizzas -->
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6b__F0JAPCAlmlszHbxLDRBMOyEnpNtS5g&s" alt="Pizza Margarita" class="menu-img">
+            <p>Pizza Margarita ($8)</p>
+            <input type="number" id="pizza1-quantity" min="0" value="0">
+            <button onclick="addToCart('Pizza Margarita', 8, 'pizza1-quantity')">Agregar</button>
+        </div>
+
+        <div class="item">
+            <img src="https://pizzeriabellaroma.es/wp-content/uploads/receta-de-pizza-de-pepperoni.jpg" alt="Pizza Pepperoni" class="menu-img">
+            <p>Pizza Pepperoni ($10)</p>
+            <input type="number" id="pizza2-quantity" min="0" value="0">
+            <button onclick="addToCart('Pizza Pepperoni', 10, 'pizza2-quantity')">Agregar</button>
+        </div>
+
+        <!-- Bebidas -->
+        <div class="item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Coca_Cola_Flasche_-_Original_Taste.jpg/1200px-Coca_Cola_Flasche_-_Original_Taste.jpg" alt="Coca-Cola" class="menu-img">
+            <p>Bebida Coca-Cola ($2)</p>
+            <input type="number" id="drink1-quantity" min="0" value="0">
+            <button onclick="addToCart('Coca-Cola', 2, 'drink1-quantity')">Agregar</button>
+        </div>
+
+        <div class="item">
+            <img src="https://cdn0.celebritax.com/sites/default/files/styles/watermark_100/public/recetas/limonada.jpg" alt="Limonada" class="menu-img">
+            <p>Bebida Limonada ($3)</p>
+            <input type="number" id="drink2-quantity" min="0" value="0">
+            <button onclick="addToCart('Limonada', 3, 'drink2-quantity')">Agregar</button>
+        </div>
+
+        <button onclick="viewCart()">Ver Carrito</button>
+        <button onclick="logout()">Cerrar Sesión</button>
+    </div>
+
+    <!-- 🔹 Carrito -->
+    <div id="cart-container" class="container hidden">
+        <h2>Carrito de Compras</h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total"></p>
+        <button onclick="checkout()">Pagar</button>
+        <button onclick="backToMenu()">Volver</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
